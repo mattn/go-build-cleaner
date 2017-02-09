@@ -19,9 +19,8 @@ var (
 		"check-log-test",
 		"check-event-log-test",
 		"check-windows-eventlog-test",
+		"appengine.guestbook-go",
 		"gom",
-		"tomcat.",
-		"tmp-",
 		"zglob",
 	}
 )
