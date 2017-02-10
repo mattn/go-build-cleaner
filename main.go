@@ -28,7 +28,8 @@ func main() {
 	for _, c := range cleaners {
 		result, err := c.cleaner(*dryrun, *verbose)
 		if err != nil {
-			log.Fatalf("%s: %s", c.name, err)
+			log.Println("%s: %s", c.name, err)
+			continue
 		}
 		c.result = result
 	}
