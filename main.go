@@ -8,8 +8,8 @@ import (
 
 var (
 	cleaners = []*cleanerInfo{}
-	dryrun   = flag.Bool("dryrun", false, "dryrun")
-	verbose  = flag.Bool("verbose", false, "verbose")
+	dryrun   = flag.Bool("dryrun", true, "dryrun")
+	verbose  = flag.Bool("verbose", true, "verbose")
 )
 
 type cleanerInfo struct {
