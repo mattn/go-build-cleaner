@@ -26,6 +26,7 @@ func removeFromFwMgr(name, appname string) error {
 }
 
 func cleanWindowsFirewall(dryrun, verbose bool) (string, error) {
+	gopath := filepath.Clean(os.Getenv("GOPATH")) + string(os.PathSeparator)
 	pattern := filepath.Join(os.TempDir(), "go-build")
 
 	ole.CoInitialize(0)
@@ -46,7 +47,11 @@ func cleanWindowsFirewall(dryrun, verbose bool) (string, error) {
 		rule := v.ToIDispatch()
 		name := oleutil.MustGetProperty(rule, "Name").ToString()
 		appname := oleutil.MustGetProperty(rule, "Applicationname").ToString()
-		if strings.HasPrefix(strings.ToLower(appname), strings.ToLower(pattern)) {
+		matched := strings.HasPrefix(strings.ToLower(appname), strings.ToLower(pattern))
+		if !matched {
+			matched = strings.HasPrefix(strings.ToLower(appname), gopath)
+		}
+		if matched {
 			if verbose {
 				log.Println("WindowsFirewall:", name)
 			}
