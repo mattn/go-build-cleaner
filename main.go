@@ -35,7 +35,9 @@ func main() {
 		c.result = result
 	}
 	for _, c := range cleaners {
-		fmt.Printf("%s: %s\n", c.name, c.result)
+		if c.result != "" {
+			fmt.Printf("%s: %s\n", c.name, c.result)
+		}
 	}
 	if *dryrun {
 		fmt.Printf("run '%s -dryrun=false' to delete\n", os.Args[0])
