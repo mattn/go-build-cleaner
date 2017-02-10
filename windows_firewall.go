@@ -55,7 +55,6 @@ func cleanWindowsFirewall(dryrun, verbose bool) (string, error) {
 				if rerr != nil {
 					rerr = removeFromFwMgr(name, appname)
 					if rerr != nil {
-						println("===")
 						return rerr
 					}
 				}
