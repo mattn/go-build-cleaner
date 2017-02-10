@@ -48,7 +48,7 @@ func cleanWindowsFirewall(dryrun, verbose bool) (string, error) {
 		name := oleutil.MustGetProperty(rule, "Name").ToString()
 		appname := oleutil.MustGetProperty(rule, "Applicationname").ToString()
 		matched := strings.HasPrefix(strings.ToLower(appname), strings.ToLower(pattern))
-		if !matched {
+		if !matched && gopath != "" {
 			matched = strings.HasPrefix(strings.ToLower(appname), gopath)
 		}
 		if matched {
