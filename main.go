@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"log"
+	"os"
 )
 
 var (
@@ -35,5 +36,8 @@ func main() {
 	}
 	for _, c := range cleaners {
 		fmt.Printf("%s: %s\n", c.name, c.result)
+	}
+	if *dryrun {
+		fmt.Printf("run '%s -dryrun=false' to delete\n", os.Args[0])
 	}
 }
