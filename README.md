@@ -3,7 +3,7 @@
 This removes following that go generated. Often, `go run` doesn't clean temporary directory which go generated.
 
 * Remove temporary directory.
-* Remove Windows Fireall Rules.
+* Remove Windows Firewall Rules.
 
 ## Usage
 
